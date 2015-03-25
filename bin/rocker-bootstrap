@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+case "$OSTYPE" in
+  darwin*)  OS="osx";;
+  linux*)   OS="linux";;
+  *)        OS="unknown";;
+esac
+
+ARCH=$(uname -m)
+DIST=$(uname -s)
+
+docker_compose_version="1.1.0"
+docker_compose_url="https://github.com/docker/compose/releases/download/$docker_compose_version/docker-compose-$DIST-$ARCH"
+
+docker_machine_version="v0.1.0"
+docker_machine_osx_64="https://github.com/docker/machine/releases/download/$docker_machine_version/docker-machine_darwin-amd64"
+docker_machine_osx_32="https://github.com/docker/machine/releases/download/$docker_machine_version/docker-machine_darwin-386"
+docker_machine_linux_64="https://github.com/docker/machine/releases/download/$docker_machine_version/docker-machine_linux-amd64"
+docker_machine_linux_32="https://github.com/docker/machine/releases/download/$docker_machine_version/docker-machine_linux-386"
+
+case "$1" in
+  machine)
+    bin_output="/usr/local/bin/docker-machine"
+    [[ -e $bin_output ]] && echo "Docker Machine already installed" && exit
+
+    echo "Installing Docker Machine $docker_machine_version"
+
+    case "$OS" in
+    osx)
+      if [[ $ARCH == "x86_64" ]]; then
+        wget $docker_machine_osx_64 -qO $bin_output
+      else
+        wget $docker_machine_osx_32 -qO $bin_output
+      fi
+    ;;
+    linux)
+      if [[ $ARCH == "x86_64" ]]; then
+        wget $docker_machine_linux_64 -qO $bin_output
+      else
+        wget $docker_machine_linux_32 -qO $bin_output
+      fi
+    ;;
+    esac
+
+    chmod +x $bin_output
+
+    echo "Docker Machine installed!"
+  ;;
+
+  compose)
+    bin_output="/usr/local/bin/docker-compose"
+    [[ -e $bin_output ]] && echo "Docker Compose already installed" && exit
+
+    echo "Installing Docker Compose v$docker_compose_version"
+
+    wget $docker_compose_url -qO $bin_output
+    chmod +x $bin_output
+    echo "Docker Compose installed!"
+  ;;
+
+  *)
+    rocker bootstrap machine
+    rocker bootstrap compose
+  ;;
+esac

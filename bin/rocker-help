@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cat <<EOF
+  bootstrap -
+  ls -
+  use -
+  do -
+  compose -
+
+  proper ENV
+EOF

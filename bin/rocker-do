@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+source ~/.rocker
+docker $cmd $@

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker-machine env $1 > ~/.rocker
+echo "Using $1"

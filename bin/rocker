@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+test "$#" == 0 && rocker-help && exit 1
+
+if command -v "rocker-$1" > /dev/null
+then
+  plugin=$1 && shift && rocker-$plugin $@
+else
+  if (docker | grep "Commands:" -A200 | grep "    " | awk '{print $1}' | grep "$1" &>/dev/null); then
+    rocker do $1
+  else
+    rocker-help && exit 1
+  fi
+fi

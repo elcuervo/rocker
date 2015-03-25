@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
 cat <<EOF
-  bootstrap -
-  check -
-  compose -
-  do -
-  env -
-  help -
-  ip -
-  ls -
-  machine -
-  use -
+SYNOPSIS
+      rocker is an opinionated docker, docker-machine and docker-compose wrapper
+      that aims to easily switch and control diverent environments.
+
+USAGE
+      $ rocker bootstrap            # Bootstraps the dependencies: docker,
+                                    # docker-compose and docker-machine.
+      $ rocker check                # Checks the status of the installation.
+      $ rocker compose              # Runs docker-compose pointing to the
+                                    # selected env (after rocker use).
+      $ rocker do                   # Runs docker commands pointing to the
+                                    # selected env (after rocker use).
+      $ rocker env                  # Prints the current DOCKER env vars.
+      $ rocker help                 # Displays this help.
+      $ rocker ip                   # Outputs the current Docker ip.
+      $ rocker ls                   # Lists the docker-machine environments.
+      $ rocker machine              # Runs docker-machine commands.
+      $ rocker use                  # Sets the current env to use.
 EOF

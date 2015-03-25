@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-if command -v "docker-compose" > /dev/null && command -v "docker-machine" > /dev/null; then
-  code=0
-else
-  code=1
-fi
+command -v "docker-compose" > /dev/null && command -v "docker-machine" > /dev/null
+code=$?
 
 if [[ $1 != "quiet" ]]; then
   if [[ $code == 0 ]]; then

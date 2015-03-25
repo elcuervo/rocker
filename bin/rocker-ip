@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-rocker check quiet || exit 1
+rocker check > /dev/null || exit 1
 source ~/.rocker
 echo $DOCKER_HOST | awk -F/ '{print $3}' | awk -F: '{print $1}'

@@ -3,12 +3,10 @@
 command -v "docker-compose" > /dev/null && command -v "docker-machine" > /dev/null
 code=$?
 
-if [[ $1 != "quiet" ]]; then
-  if [[ $code == 0 ]]; then
-    echo "Rocker ready to rock!"
-  else
-    echo "Run rocker bootstrap to set up the dependencies"
-  fi
+if [[ $code == 0 ]]; then
+  echo "Rocker ready to rock!"
+else
+  echo "Run rocker bootstrap to set up the dependencies"
 fi
 
 exit $code

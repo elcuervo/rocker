@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-rocker check quiet || exit 1
+rocker check > /dev/null || exit 1
 docker-machine ls

@@ -3,4 +3,5 @@
 rocker check > /dev/null || exit 1
 test "$#" == 0 && echo "No env selected, listing envs:" && rocker-ls && exit 1
 docker-machine env $1 > ~/.rocker
+echo "export DOCKER_ENV=$1" >> ~/.rocker
 echo "Using $1"

@@ -11,6 +11,7 @@ USAGE
       $ rocker check                # Checks the status of the installation.
       $ rocker compose              # Runs docker-compose pointing to the
                                     # selected env (after rocker use).
+      $ rocker current              # List the current env
       $ rocker do                   # Runs docker commands pointing to the
                                     # selected env (after rocker use).
       $ rocker env                  # Prints the current DOCKER env vars.

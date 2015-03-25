@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rocker check > /dev/null || exit 1
+[[ -e ~/.rocker ]] || (echo "Select your env by running rocker use [NAME]" && exit 1)
+source ~/.rocker
+echo "Currently running $DOCKER_ENV env"

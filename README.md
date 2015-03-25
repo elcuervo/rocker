@@ -1,4 +1,4 @@
-# Rocker
+
 _the docker, docker-machine and docker-compose wrapper_
 
 ![](http://wac.450f.edgecastcdn.net/80450F/wkdq.com/files/2013/03/Rock-Hand-Sign-Credit-iStockphoto-141325118.jpg?w=600&h=0&zc=1&s=0&a=t&q=89)
@@ -20,6 +20,21 @@ make install
 ```bash
 # Bootstrap your environment:
 rocker bootstrap
+
+# Check the status of your env:
+rocker check
+
+# Run docker-compose commands with the current env:
+rocker compose
+
+# Run docker-machine commands with the current env:
+rocker machine
+
+# Get the current env
+rocker current
+
+# Get the current env IP address
+rocker ip
 
 # List your docker hosts
 rocker ls

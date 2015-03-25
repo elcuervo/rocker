@@ -2,4 +2,4 @@
 
 rocker check quiet || exit 1
 source ~/.rocker
-docker-compose $@
+docker-machine $@

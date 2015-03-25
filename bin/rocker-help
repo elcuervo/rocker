@@ -2,10 +2,13 @@
 
 cat <<EOF
   bootstrap -
-  ls -
-  use -
-  do -
+  check -
   compose -
-
-  proper ENV
+  do -
+  env -
+  help -
+  ip -
+  ls -
+  machine -
+  use -
 EOF

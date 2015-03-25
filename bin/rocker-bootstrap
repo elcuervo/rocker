@@ -19,6 +19,19 @@ docker_machine_linux_64="https://github.com/docker/machine/releases/download/$do
 docker_machine_linux_32="https://github.com/docker/machine/releases/download/$docker_machine_version/docker-machine_linux-386"
 
 case "$1" in
+  docker)
+    command -v "docker" > /dev/null && echo "Docker already installed" && exit
+
+    echo "Installing Docker"
+
+    case "$OS" in
+      osx)
+        command -v "brew" > /dev/null || echo "Please install hombrew (brew.sh)" && exit
+        brew install docker > /dev/null
+        echo "Docker installed"
+        ;;
+    esac
+  ;;
   machine)
     bin_output="/usr/local/bin/docker-machine"
     [[ -e $bin_output ]] && echo "Docker Machine already installed" && exit
@@ -59,7 +72,9 @@ case "$1" in
   ;;
 
   *)
+    rocker bootstrap docker
     rocker bootstrap machine
     rocker bootstrap compose
+    rocker check
   ;;
 esac

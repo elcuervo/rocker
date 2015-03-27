@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-command -v "docker-compose" > /dev/null && command -v "docker-machine" > /dev/null
+command -v "docker" > /dev/null && \
+  command -v "docker-machine" > /dev/null && \
+  command -v "docker-compose" > /dev/null
+
 code=$?
 
 if [[ $code == 0 ]]; then
